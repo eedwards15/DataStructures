@@ -1,5 +1,7 @@
 package main
 
+import "fmt"
+
 type Stack []string
 
 func (stack *Stack) IsEmpty() bool {
@@ -16,12 +18,21 @@ func (stack *Stack) Pop() (string, bool) {
 	}
 
 	index := len(*stack) - 1
-	element := (*stack)[index]
+	tmp := (*stack)[index]
 	*stack = (*stack)[:index]
-	return element, true
+	return tmp, true
 
 }
 
 func main() {
+	var inventory Stack
+	inventory.Push("Health Pot")
+	inventory.Push("Sword")
+	inventory.Push("Bow")
+
+	for !inventory.IsEmpty() {
+		item, _ := inventory.Pop()
+		fmt.Printf("%s \n", item)
+	}
 
 }
